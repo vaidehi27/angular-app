@@ -1,27 +1,22 @@
 # AngularExample
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
+This project was generated with Angular CLI version 8.3.2.
 
-## Development server
+Create an angular app and make the following changes to make it work with our shell.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. In the shell we have use the tag <in-app> where our micro app is suppose to render and hence we will change the `app-root` in `src/app/app.component.ts` to `in-app`.
 
-## Code scaffolding
+2. Inside `src/app/app.module.ts`, add base path to the providers.
+```
+import { NgModule } from "@angular/core";
+import { APP_BASE_HREF } from "@angular/common";
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+@NgModule({
+  ...
+  providers: [{ provide: APP_BASE_HREF, useValue: "/angular" }],
+})
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+3. We have set `/angular` as a base path so that when we hit URL with `/angular` from the shell, it will consider it as the base URL. If the URL in the shell is different for this app, update this base path accordingly.
